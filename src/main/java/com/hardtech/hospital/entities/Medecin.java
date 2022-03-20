@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,9 +23,9 @@ public class Medecin {
     private String nom;
     private String email;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private Specialite specialite;
 
-    @OneToMany(mappedBy = "medecin", fetch = FetchType.LAZY)
-    private List<RendezVous> rendezVous;
+    @OneToMany(mappedBy = "medecin", fetch = FetchType.EAGER)
+    private List<RendezVous> rendezVous = new ArrayList<>();
 }

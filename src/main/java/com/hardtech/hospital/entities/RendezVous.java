@@ -21,7 +21,7 @@ public class RendezVous {
 
     private LocalDate date;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private StatusRDV status;
 
     @ManyToOne
