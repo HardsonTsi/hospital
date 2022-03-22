@@ -1,5 +1,6 @@
 package com.hardtech.hospital.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,6 +9,8 @@ import org.hibernate.annotations.DynamicUpdate;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.fasterxml.jackson.annotation.JsonProperty.Access.WRITE_ONLY;
 
 @Entity
 @Data
@@ -26,6 +29,7 @@ public class Medecin {
     @Enumerated(EnumType.STRING)
     private Specialite specialite;
 
-    @OneToMany(mappedBy = "medecin", fetch = FetchType.EAGER)
+    @JsonProperty(access = WRITE_ONLY)
+    @OneToMany(mappedBy = "medecin", cascade = CascadeType.ALL)
     private List<RendezVous> rendezVous = new ArrayList<>();
 }

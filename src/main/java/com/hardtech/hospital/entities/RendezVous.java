@@ -8,6 +8,7 @@ import org.hibernate.annotations.DynamicUpdate;
 import javax.persistence.*;
 import java.time.LocalDate;
 
+
 @Entity
 @Data
 @DynamicUpdate
@@ -30,6 +31,8 @@ public class RendezVous {
     @ManyToOne
     private Patient patient;
 
-    @OneToOne(mappedBy = "rendezVous")
+    @OneToOne
     private Consultation consultation;
+
+
 }

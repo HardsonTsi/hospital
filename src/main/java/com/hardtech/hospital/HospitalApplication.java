@@ -58,7 +58,7 @@ public class HospitalApplication {
                 RendezVous rendezVous = new RendezVous();
                 rendezVous.setPatient(patient);
                 rendezVous.setMedecin(medecin);
-                rendezVous.setStatus((random >=0 && random <= 4) ? StatusRDV.DONE : (random >=5 && random < 7) ? StatusRDV.CANCELED : StatusRDV.PENDING);
+                rendezVous.setStatus((random >= 0 && random <= 4) ? StatusRDV.DONE : (random >= 5 && random < 7) ? StatusRDV.CANCELED : StatusRDV.PENDING);
                 rendezVous.setDate(LocalDate.of(random * 224, random > 3 ? Month.APRIL : Month.NOVEMBER, random));
                 rendezVousRepository.save(rendezVous);
             });
@@ -66,7 +66,7 @@ public class HospitalApplication {
 
             //Ajout de consultations
             List<RendezVous> rendezVousList = rendezVousRepository.findAll();
-            rendezVousList.forEach(rendezVous-> {
+            rendezVousList.forEach(rendezVous -> {
                 int random = generateNumber();
                 Consultation consultation = new Consultation();
                 consultation.setDateConsultation(LocalDate.of(random * 224, random > 3 ? Month.DECEMBER : Month.MARCH, random));

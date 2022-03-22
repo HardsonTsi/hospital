@@ -8,6 +8,7 @@ import org.hibernate.annotations.DynamicUpdate;
 import javax.persistence.*;
 import java.time.LocalDate;
 
+
 @Entity
 @Data
 @DynamicUpdate
@@ -23,8 +24,7 @@ public class Consultation {
 
     private String rapport;
 
-    @OneToOne
+    @OneToOne(mappedBy = "consultation")
     private RendezVous rendezVous;
-
 
 }
